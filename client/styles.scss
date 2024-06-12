@@ -1,0 +1,58 @@
+$p0: 0.5em;
+$p1: 1em;
+$lightBorder: 1px solid #8a8a8a;
+$plainShadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2);
+$highShadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+$lightGray: #f8f8f8;
+$primary: #00beff;
+$secondary: #1289b2;
+$lightOrange: #FFCA08;
+$darkOrange: #F57921;
+$lightBlue: #ACCEEC;
+$lightGreen: rgb(238, 252, 238);
+
+
+* {
+  box-sizing: border-box;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  margin: 0;
+  padding: 0;
+  color:black;
+}
+
+h1 {
+  font-family: "Zen Dots", sans-serif;
+  text-align: center;
+  letter-spacing: .2em;
+  margin-bottom: 10px;
+}
+
+.app {
+  max-width: 60em;
+  margin: 0 auto;
+  padding: $p1;
+  box-shadow: $highShadow;
+  border-radius: 5px;
+  border: $lightBorder;
+  background-color: $lightGreen;
+}
+
+.mainContainer {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: $p1;
+  display: flex;
+}
+
+.userContainer {
+  width: 30em;
+}
+
+.expenseContainer {
+  width: 60em;
+}
+
+.totalExpense {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,17 +1,22 @@
 const express = require('express');
 const path = require('path');
+// const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000|| process.env.PORT;
 
 app.use(express.json())
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
+// app.use(cors());
 
 app.use('/build', express.static(path.join(__dirname, '../build')));
+app.use(express.static(path.join(__dirname, '../client')));
 
-app.get('/', (res, res) => {
+app.get('/', (req, res) => {
     return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 })
+
+
 
 app.use((req, res) => res.status(404).send('Page Not Found'));
 

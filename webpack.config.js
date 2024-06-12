@@ -11,10 +11,20 @@ module.exports = {
     filename: 'bundle.js',
   },
   devServer: {
+    host: 'localhost',
+    port: 8080,
+    hot: true,
     static: {
       directory: path.join(__dirname, 'build'),
     },
-    port: 3000,
+    historyApiFallback: true,
+    proxy: [
+      {
+        context: ['/api'],
+        target: 'http://localhost:3000/',
+        secure: false,
+      }
+    ],
   },
   module: {
     rules: [
@@ -40,4 +50,5 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   devtool: 'eval-source-map',
+
 }
