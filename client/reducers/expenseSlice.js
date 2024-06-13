@@ -6,6 +6,7 @@ const initialState = {
   expenseList: [],
   newUser: '',
   newExpense: '',
+  countUser: [],
 }
 
 const expenseSlice = createSlice({
@@ -36,10 +37,8 @@ const expenseSlice = createSlice({
         state.newExpense = '';
       }
       let avg = num / (Object.keys(state.userList).length)
-      console.log(Object.keys(state.userList).length)
       avg = parseFloat(Number(avg).toFixed(2))
       Object.keys(state.userList).map(el => state.userList[el] += avg)
-      console.log(avg)
     },
 
     SET_NEW_EXPENSE: (state, action) => {
@@ -50,6 +49,10 @@ const expenseSlice = createSlice({
       state.expenseList = [];
       state.totalExpense = 0;
     },
+
+    COUNT_USER: (state, action) => {
+      state.countUser.push(action.payload)
+    }
   }
 
 })

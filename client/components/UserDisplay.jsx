@@ -6,7 +6,6 @@ import { RESET_USER } from '../reducers/expenseSlice';
 const UserDisplay = props => {
   const dispatch = useDispatch();
   const userList = useSelector(state => state.expense.userList);
-  console.log(userList)
 
   return(
     <div className="userDisplay">
