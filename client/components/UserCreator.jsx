@@ -10,7 +10,7 @@ const UserCreator = props => {
 
   return (
     <div className='userCreator'>
-      <label >Name: <input type="text" value={newUser}
+      <label >Name: <input type="text" value={newUser} placeholder='User'
         onChange={event=>{dispatch(SET_NEW_USER(event.target.value))}} />   
       </label>
       <button className='add' type="submit" 

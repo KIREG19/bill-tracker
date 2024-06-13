@@ -1,6 +1,6 @@
 {
   "name": "bill_tracer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Help calculate the cost for each person in the party",
   "scripts": {
     "start": "NODE_ENV=production node server/server.js",

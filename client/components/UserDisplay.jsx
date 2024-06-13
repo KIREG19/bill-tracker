@@ -9,6 +9,7 @@ const UserDisplay = props => {
 
   return(
     <div className="userDisplay">
+      <div> </div>
       <h3>User </h3>
       {Object.keys(userList) && Object.keys(userList).map((el, i) => <User key={i} id={i} user={el} cost={userList[el]}/>)}
       <div className='userReset'>
