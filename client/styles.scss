@@ -13,6 +13,13 @@ $lightGreen: rgb(238, 252, 238);
   color:black;
 }
 
+body {
+  background-image: url('./dragonite.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+
 h1 {
   font-family: "Zen Dots", sans-serif;
   text-align: center;
@@ -28,7 +35,7 @@ h3 {
 
 .app {
   max-width: 60em;
-  margin: 0 auto;
+  margin: 10em auto;
   padding: $p1;
   box-shadow: $highShadow;
   border-radius: 5px;

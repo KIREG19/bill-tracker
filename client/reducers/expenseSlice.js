@@ -33,27 +33,51 @@ const expenseSlice = createSlice({
 
     ADD_EXPENSE: (state, action) => {
       let num = parseFloat(Number(action.payload).toFixed(2))
-      //1.no user select and no payer, it only add to the total expense
-      //2.no user select and has a payer, caculate for all 
-      //3.if there is user selected and payer exist, it will calulate the selected user
-      //4.if there is user selected and payer is not includes, wont calulate
-      //5.payer and member can not be the same one
-      if(num !== 0 && !isNaN(num)){
+      const payer = state.payer.trim()
+      //1.no user select and no payer, it only add to the total expense ✔️
+      //2.no user select and has a payer, caculate for all ✔️
+      //3.if there is user selected and payer exist, it will calulate the selected user ✔️
+      //4.if there is user selected and payer is not includes, wont calulate ✔️
+      //5.payer and member can not count twice ✔️
+      if(num !== 0 && !isNaN(num) && !state.countUser.length && payer == ''){
         state.expenseList.push(num);
         state.totalExpense += num;
         state.newExpense = '';
       }
-      if(state.countUser){}
-      if(!Object.keys(state.userList).includes(state.payer)){
+      else if(num !== 0 && !isNaN(num) && !state.countUser.length && Object.keys(state.userList).includes(payer)){
         let avg = num / (Object.keys(state.userList).length)
         avg = parseFloat(Number(avg).toFixed(2))
-        Object.keys(state.userList).map(el => state.userList[el] += avg)
+        Object.keys(state.userList).map(el => {
+          if(payer === el){
+            state.userList[el] -= avg * (Object.keys(state.userList).length - 1)
+          }
+          else state.userList[el] += avg
+        })
+        state.expenseList.push(num);
+        state.totalExpense += num;
+        state.newExpense = '';
+        state.payer = '';
       }
-      if(Object.keys(state.userList).includes(state.payer)){
-        let avg = num / (state.countUser.length)
+      //3.if there is user selected and payer exist, it will calulate the selected user
+      else if(num !== 0 && !isNaN(num) && Object.keys(state.userList).includes(payer)){
+        let length = state.countUser.length 
+        if(state.countUser.includes(payer)) length--
+        let avg = num / (length + 1)
         avg = parseFloat(Number(avg).toFixed(2))
-        Object.keys(state.userList).map(el => state.userList[el] += avg)
-
+        console.log(avg)
+        Object.keys(state.userList).map(el => {
+          if(payer === el){
+            state.userList[el] -= avg * (state.countUser.length)
+          }
+          if(state.countUser.includes(el)){
+            state.userList[el] += avg
+          }
+        })
+        state.expenseList.push(num);
+        state.totalExpense += num;
+        state.newExpense = '';
+        state.payer = '';
+        state.countUser = [];
       }
     },
 

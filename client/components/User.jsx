@@ -9,7 +9,7 @@ const User = (props) => {
     <div className="user" id={props.id + 1}>{props.id + 1}
         <button className='button' type="submit" 
       onClick={() => dispatch(COUNT_USER(props.user))}>{props.user}</button>
-        <span>average: {props.cost}</span>
+        <span>owe: {props.cost}</span>
     </div>
   );
 }
