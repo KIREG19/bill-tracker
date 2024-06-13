@@ -34,10 +34,10 @@ const expenseSlice = createSlice({
     ADD_EXPENSE: (state, action) => {
       let num = parseFloat(Number(action.payload).toFixed(2))
       const payer = state.payer.trim()
-      //1.no user select and no payer, it only add to the total expense ✔️
-      //2.no user select and has a payer, caculate for all ✔️
-      //3.if there is user selected and payer exist, it will calulate the selected user ✔️
-      //4.if there is user selected and payer is not includes, wont calulate ✔️
+      //1.no user selected and no payer, only add to the total expense ✔️
+      //2.no user selected and has a payer, caculate for all ✔️
+      //3.user selected and payer exist, it will calulate for selected user ✔️
+      //4.user selected and payer is not exist, won't calulate ✔️
       //5.payer and member can not count twice ✔️
       if(num !== 0 && !isNaN(num) && !state.countUser.length && payer == ''){
         state.expenseList.push(num);
