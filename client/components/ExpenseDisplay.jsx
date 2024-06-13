@@ -10,9 +10,9 @@ const ExpenseDisplay = props => {
 
   return (
     <div className='expenseDisplay'>
-      <h4>Expense</h4>
+      <h3>Expense</h3>
       <div className='totalExpense'>Total Expense : {totalExpense}
-        <button type='submit' onClick={()=> dispatch(RESET())}>RESET</button>
+        <button className='reset' type='submit' onClick={()=> dispatch(RESET())}>RESET</button>
       </div>
       {expenseList && expenseList.map((el, i) => <Expense key={i} id={i} expense={el}/>)}
 

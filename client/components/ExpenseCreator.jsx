@@ -11,7 +11,7 @@ const ExpenseCreator = props => {
       <label>Exepnse: <input type="text" value={newExpense}
         onChange={event=>{dispatch(SET_NEW_EXPENSE(event.target.value))}} />
       </label>
-      <button type="submit" 
+      <button className='add' type="submit" 
         onClick={() => dispatch(ADD_EXPENSE(newExpense))}>
         Add Expense
       </button>

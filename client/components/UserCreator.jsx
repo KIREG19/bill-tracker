@@ -10,30 +10,14 @@ const UserCreator = props => {
 
   return (
     <div className='userCreator'>
-      <label>Name: <input type="text" value={newUser}
+      <label >Name: <input type="text" value={newUser}
         onChange={event=>{dispatch(SET_NEW_USER(event.target.value))}} />   
       </label>
-      <button type="submit" 
+      <button className='add' type="submit" 
       onClick={() => dispatch(ADD_USER(newUser))}>
-        Add User</button>
+        Add</button>
     </div> 
   );  
 };
 
 export default UserCreator;
-
-const ExpenseCreator = props => {
-
-  return (
-    <div className='expenseCreator'>
-      <label>Exepnse:
-        <input type="text" value={newExpense}
-        onChange={event=>{dispatch(SET_NEW_EXPENSE(event.target.value))}} />
-      </label>
-      <button type="submit" 
-        onClick={() => dispatch(ADD_EXPENSE(newExpense))}>
-        Add Expense
-      </button>
-    </div> 
-  );  
-};

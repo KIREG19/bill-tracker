@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  userList: [],
+  userList: {},
   totalExpense: 0,
   expenseList: [],
   newUser: '',
@@ -14,12 +14,18 @@ const expenseSlice = createSlice({
   reducers:{
 
     ADD_USER: (state, action) => {
-      state.userList.push(action.payload)
-      state.newUser = ''
+      if(!state.userList[action.payload] && action.payload.trim() !== ''){
+        state.userList[action.payload] = 0
+        state.newUser = ''
+      }
     },
 
     SET_NEW_USER: (state, action) => {
       state.newUser = action.payload
+    },
+
+    RESET_USER: (state, action) => {
+      state.userList = {}
     },
 
     ADD_EXPENSE: (state, action) => {
@@ -27,11 +33,13 @@ const expenseSlice = createSlice({
       if(num !== 0 && !isNaN(num)){
         state.expenseList.push(num);
         state.totalExpense += num;
-        // state.user = '';
         state.newExpense = '';
-        console.log('expenseList', [...state.expenseList])
-        console.log('totalExpense', state.totalExpense)
       }
+      let avg = num / (Object.keys(state.userList).length)
+      console.log(Object.keys(state.userList).length)
+      avg = parseFloat(Number(avg).toFixed(2))
+      Object.keys(state.userList).map(el => state.userList[el] += avg)
+      console.log(avg)
     },
 
     SET_NEW_EXPENSE: (state, action) => {
@@ -46,6 +54,6 @@ const expenseSlice = createSlice({
 
 })
 
-export const { ADD_USER, SET_NEW_USER, ADD_EXPENSE, SET_NEW_EXPENSE, RESET } = expenseSlice.actions;
+export const { ADD_USER, SET_NEW_USER, ADD_EXPENSE, SET_NEW_EXPENSE, RESET, RESET_USER } = expenseSlice.actions;
 
 export default expenseSlice.reducer;
