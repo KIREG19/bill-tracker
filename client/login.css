@@ -1,0 +1,93 @@
+/* $p1: 1em;
+$lightBorder: 1px solid #8a8a8a;
+$highShadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+$lightOrange: #f7d766;
+$lightGreen: rgb(238, 252, 238); */
+
+* {
+  box-sizing: border-box;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  margin: 0;
+  padding: 0;
+  color:black;
+}
+
+body {
+  background-image: url('./dragonite.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+
+.chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 25em;
+  margin: 10em auto;
+  padding: 1em;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  border:  1px solid #8a8a8a;
+  background-color: rgb(238, 252, 238);
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+input {
+  margin-top: 1em;
+  background-color: rgb(238, 252, 238);
+  border: none;
+  width: 60%;
+  padding-left: 0.875rem;
+  padding-top: 0.825rem;
+  padding-bottom: 0.5rem;
+  font-size: larger;
+  border-bottom: 1px solid #8a8a8a;
+};
+
+.login:focus {
+  outline: none;
+};
+
+.login:hover {
+  background: white;
+}
+
+.btn {
+  margin-top: 1em;
+  background-color: #f7d766;
+  padding: 5px 10px;
+  border-radius: 5px;
+  height: 2em;
+  border-color: rgb(238, 252, 238);
+  font-size: 1rem;
+}
+
+.btn2 {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7d766;
+  border: none;
+  width: 60%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border-color: rgb(238, 252, 238);
+  font-size: 1rem;
+  margin-top: 1em;
+  height: 2em;
+}

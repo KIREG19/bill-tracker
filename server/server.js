@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors')
 
+const userController = require('./controllers/userController');
+
 const app = express();
 const PORT = 3000;
 
@@ -10,10 +12,26 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/build', express.static(path.join(__dirname, '../build')));
-app.use(express.static(path.join(__dirname, '../client')));
+app.use('/client', express.static(path.join(__dirname, '../client')));
 
 app.get('/', (req, res) => {
-    return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
+  return res.status(200).sendFile(path.join(__dirname, '../client/login.html'));
+})
+
+app.post('/login', userController.getUser, (req, res) => {
+  return res.redirect('/bt');
+})
+
+app.get('/signup', (req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '../client/signup.html'));
+});
+
+app.post('/signup', userController.createUser, (req, res) => {
+  return res.redirect('/bt');
+})
+
+app.get('/bt', (req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 })
 
 app.use((req, res) => res.status(404).send('Page Not Found'));
