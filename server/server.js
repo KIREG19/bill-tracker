@@ -27,7 +27,7 @@ app.get('/signup', (req, res) => {
 });
 
 app.post('/signup', userController.createUser, (req, res) => {
-  return res.redirect('/bt');
+  return res.redirect('/');
 })
 
 app.get('/bt', (req, res) => {
